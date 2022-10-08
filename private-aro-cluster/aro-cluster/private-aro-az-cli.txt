@@ -1,0 +1,16 @@
+Let us start deploying our private ARO using Az cli
+
+LOCATION=westeurope
+RESOURCEGROUP=aro-rg
+CLUSTER=aro01
+
+#create a private aro cluster
+az aro create \
+--resource-group $RESOURCEGROUP \
+--name $CLUSTER \
+--vnet aro-vnet \
+--master-subnet master-sub \
+--worker-subnet worker-sub \
+--apiserver-visibility private \
+--ingress-visibility private \
+--pull-secret @pull-secret.txt
